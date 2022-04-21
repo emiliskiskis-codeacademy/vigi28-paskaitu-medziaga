@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lentelės</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- table, tr, th, td -->
+  <table id="pirma">
+    <colgroup>
+      <col class="pirmas-stulpelis">
+      <col class="antras-stulpelis">
+      <col class="trecias-stulpelis">
+      <col class="ketvirtas-stulpelis">
+      <col span="3">
+    </colgroup>
+    <tr>
+      <th id="pirmo-stulpelio-antraste">Vardas</th>
+      <th>Pavardė</th>
+      <th>Gimimo data</th>
+      <th>Gyvenamoji vieta</th>
+    </tr>
+    <tr>
+      <td>Emilis</td>
+      <td>Kiškis</td>
+      <td>2000-05-12</td>
+      <td>Vilnius</td>
+    </tr>
+    <tr>
+      <td>Bill</td>
+      <td>Gates</td>
+      <td>1955-10-28</td>
+      <td>Seattle</td>
+    </tr>
+    <tr>
+      <td>Tim</td>
+      <td>Berners-Lee</td>
+      <td>1955-06-08</td>
+      <td>London</td>
+    </tr>
+  </table>
+  <table id="antra" class="raudona">
+    <tr class="raudona">
+      <th rowspan="4">Asmeniniai duomenys</th>
+      <th>Vardas</th>
+      <td>Emilis</td>
+      <td class="raudona">Bill</td>
+      <td>Tim</td>
+    </tr>
+    <tr>
+      <!-- Asmeniniai duomenys -->
+      <th>Pavardė</th>
+      <td>Kiškis</td>
+      <td>Gates</td>
+      <td>Berners-Lee</td>
+    </tr>
+    <tr>
+      <!-- Asmeniniai duomenys -->
+      <th>Gimimo data</th>
+      <td>2000-05-12</td>
+      <td>1955-10-28</td>
+      <td>1955-06-08</td>
+    </tr>
+    <tr>
+      <!-- Asmeniniai duomenys -->
+      <th>Gyvenamoji vieta</th>
+      <td>Vilnius</td>
+      <td>Seattle</td>
+      <td>London</td>
+    </tr>
+  </table>
+</body>
+</html>

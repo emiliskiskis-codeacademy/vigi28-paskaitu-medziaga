@@ -1,0 +1,36 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+}
+
+table {
+  margin-bottom: 10px;
+}
+
+#antra tr td:first-of-type {
+  background-color: #BDADEA;
+}
+
+td.raudona {
+  background-color: red;
+}
+
+/* 
+first-child
+first-of-type
+last-child
+last-of-type
+nth-child
+nth-last-child
+nth-of-type
+nth-last-of-type
+*/

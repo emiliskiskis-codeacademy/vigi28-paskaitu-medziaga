@@ -1,0 +1,4 @@
+Naudingos nuorodos:
+
+Žymių sąrašas: https://www.w3schools.com/tags/default.asp
+Apie HTML: https://developer.mozilla.org/en-US/docs/Web/HTML

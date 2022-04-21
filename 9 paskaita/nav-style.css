@@ -1,0 +1,28 @@
+html {
+  font-family: Raleway, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  box-shadow: 0 0 8px;
+}
+
+nav > div {
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 2px solid lightblue;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: flex-grow 500ms ease-out 0s;
+}
+
+nav > div:nth-child(4) {
+  flex-grow: 2;
+  border-bottom: 2px solid blue;
+}

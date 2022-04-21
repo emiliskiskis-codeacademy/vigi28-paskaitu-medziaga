@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 paskaita - Formos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="forma">
+    <fieldset>
+      <legend>Asmeniniai duomenys</legend>
+      <label for="vardas">Vardas:</label>
+      <input id="vardas" name="vardas" list="vardai">
+      <br>
+      <label for="pavarde">Pavardė:</label>
+      <input id="pavarde" name="pavarde" list="vardai">
+      <br>
+      <label for="gimimo-data">Gimimo data:</label>
+      <input id="gimimo-data" name="gimimo-data" type="date">
+      <br>
+      <label for="amzius">Amžius *:</label>
+      <input id="amzius" name="amzius" type="number" min="5" max="120" required="" step="0.002">
+      <br>
+      <label for="adresas">Adresas:</label>
+      <input id="adresas" name="adresas">
+      <br>
+
+      <fieldset>
+        <legend>Lytis</legend>
+        <input id="lytis-vyras" name="lytis" type="radio" value="vyras">
+        <label for="lytis-vyras">Vyras</label>
+        <br>
+        <input id="lytis-moteris" name="lytis" type="radio" value="moteris">
+        <label for="lytis-moteris">Moteris</label>
+        <br>
+        <input id="lytis-nesakysiu" name="lytis" type="radio" value="nesakysiu">
+        <label for="lytis-nesakysiu">Nenoriu dalintis</label>
+      </fieldset>
+      <fieldset>
+        <legend>Turimi dalykai</legend>
+        <input id="turimi-automobilis" name="turimi-automobilis" type="checkbox">
+        <label for="turimi-automobilis">Automobilis</label>
+        <br>
+        <input id="turimi-telefonas" name="turimi-telefonas" type="checkbox">
+        <label for="turimi-telefonas">Mobilusis telefonas</label>
+        <br>
+        <input id="turimi-draudimas" name="turimi-draudimas" type="checkbox">
+        <label for="turimi-draudimas">Draudimas</label>
+      </fieldset>
+      <label for="seimos-padetis">Šeimos padėtis:</label>
+      <select id="seimos-padetis" name="seimos-padetis">
+        <optgroup label="Neturiu partnerio">
+          <option value="nevedes">Nevedęs</option>
+          <option value="issiskyres">Išsiskyręs</option>
+        </optgroup>
+        <optgroup label="Turiu partnerį">
+          <option value="vedes">Vedęs</option>
+          <option value="haremas" disabled="" selected="">Haremas</option> 
+        </optgroup>
+      </select>
+    </fieldset>
+    <br>
+
+    <datalist id="vardai">
+      <option>Emilis</option>
+      <option>Rokas</option>
+      <option>Vytas</option>
+      <option>Jonas</option>
+      <option>Kazys</option>
+      <option>Eglė</option>
+      <option>Aušra</option>
+    </datalist>
+
+    <fieldset>
+      <legend>Pomėgiai</legend>
+      <label for="patinkantys-vaisiai">Patinkantys vaisiai:</label>
+      <input id="patinkantys-vaisiai">
+    </fieldset>
+    <br>
+    <input id="pateikti" type="submit" value="Pateikti" formmethod="post">
+
+    <p>* - privalomi laukai</p>
+  </form>
+</body>
+</html>
+<!-- Validavimui:
+* min, max (type=number, date, range)
+* minlength, maxlength (type=text, email, password)
+* multiple (type=file)
+* pattern (type=text, password)
+* required (type= visi)
+* step (type=number, range)
+
+Pseudo-klasės:
+:focus - pasirinktas elementas
+:active - paspaustas elementas
+:hover - pelytė užslinkta virš
+:target - elementas, į kurį nueita su nuoroda
+:focus-visible - elementas, pasirinktas su matoma kraštine (pvz. įvesties laukas)
+:focus-within - elementas, kuriame yra pasirinktas (t.y. su :focus) elementas
+:visited - aplankyta nuoroda
+-->
