@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  background-color: purple;
+  padding: 10px;
+  flex-wrap: wrap;
+  
+  /* flex-direction: row; Numatytoji
+  flex-direction: column;
+  flex-direction: row-reverse;
+  flex-direction: row-reverse; */
+
+  /* flex-wrap: nowrap; Numatytoji
+  flex-wrap: wrap;
+  flex-wrap: wrap-reverse; */
+
+  /* justify-content: flex-start; Numatytoji
+  justify-content: flex-end;
+  justify-content: center;
+  justify-content: space-between;
+  justify-content: space-evenly;
+  justify-content: space-around; */
+
+  /* align-items: flex-start;
+  align-items: flex-end;
+  align-items: center;
+  align-items: stretch; Numatytoji */
+
+  /* align-content: flex-start;
+  align-content: flex-end;
+  align-content: center;
+  align-content: space-between;
+  align-content: space-around;
+  align-content: stretch; Numatytoji */
+}
+
+.container > div {
+  width: 25px;
+  height: 25px;
+  background-color: orange;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* flex-grow: 0, 1, ...; numatytoji - 0 */
+  /* flex-shrink: 0, 1, ...; numatytoji - 0 */
+  /* flex-basis: px, em, rem, ...; numatytoji - elemento plotis */
+
+  /* flex: 0, 1, ...; numatytosios nėra */
+  /* order: -1, 0, 1, ...; numatytoji - 0 */
+
+  /* align-self - kaip align-items, bet flex item'ui (vienam elementui) */
+}
+
+.item:first-child {
+  flex: 1;
+}
+
+.item:nth-child(2n) {
+  /* order: 1; */
+}

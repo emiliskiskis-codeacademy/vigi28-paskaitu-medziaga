@@ -11,7 +11,8 @@
     flex-shrink
     flex-wrap
     align-self
-    align-items
+    align-content
+    order
 */
 
 #container {
