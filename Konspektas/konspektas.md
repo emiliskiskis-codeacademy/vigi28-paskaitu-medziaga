@@ -252,8 +252,8 @@ Paprasčiausi CSS selektoriai:
 * `color` - teksto spalva
 * `background-color` - fono spalva
 * `font-size` - šrifto dydis
-* `font-family` - šriftas (pvz. Times New Roman, Arial, Calibri). Rašomas šrifto pavadinimas, jei yra tarpai, 
-* `text-align` - teksto lygiavimas
+* `font-family` - šriftas (pvz. Times New Roman, Arial, Calibri). Rašomas šrifto pavadinimas, jei yra tarpai, pilnas pavadinimas rašomas tarp viengubų `''` arba dvigubų `""` kabučių.
+* `text-align` - teksto lygiavimas: `left`, `center`, `right` arba `justify`.
 * `width`, `height` - elemento plotis, aukštis, ypač aktualu nuotraukoms (`img` elementams)
 * `margin`- elemento paraštės
 * `padding` - elemento užpildas (apkamšymas)
@@ -273,3 +273,139 @@ Skaičių galimos reikšmės (dydžiams, pvz. `width`, `padding`):
   * Reliatyvūs matavimo vienetai: `%`, `em`, `rem`
 
     Detalesnis aprašymas apie matavimo vienetus: [https://developer.mozilla.org/en-US/docs/Web/CSS/length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+
+## Sudėtingesni CSS selektoriai, naudojant kombinatorius
+
+Pasidarykime pavyzdinę HTML struktūrą:
+
+```html
+<main class="turinys">
+  <article class="svarbu">
+    <h2>Dega Vilnius - KĄTIK ATNAUJINTA (10)</h2>
+    <section>
+      <h3>Kas nutiko?</h3>
+      <p>Id et id excepteur mollit enim reprehenderit eiusmod ipsum tempor magna ad sint adipisicing ipsum.</p>
+      <p>Anim laborum in est nisi veniam commodo excepteur proident elit qui deserunt deserunt ad.</p>
+    </section>
+    <section>
+      <h3>Kodėl taip nutiko?</h3>
+      <p>Deserunt Lorem esse id nulla in irure elit magna pariatur cillum occaecat tempor.</p>
+      <p>Elit eu non culpa aute ea magna. Minim nulla ad exercitation nulla. Reprehenderit est et ipsum culpa nostrud consequat ex adipisicing consectetur nisi.</p>
+    </section>
+  </article>
+  <article>
+    <h2>Viskas brangsta</h2>
+    <p>Aliquip officia nisi in nisi eiusmod minim excepteur eiusmod ut aute ad labore elit. Aliquip nostrud consequat deserunt esse in eiusmod amet dolore fugiat consequat nulla consectetur id. Est minim sunt elit ea tempor sunt irure culpa anim cillum dolor. Est deserunt aliqua do qui in voluptate in cillum sit. Laborum minim esse esse anim eu consectetur quis ea magna in.</p>
+  </article>
+  <article>
+    <h2>Įžymybė išsiskyrė su kita įžymybe</h2>
+    <p>Esse minim ut ut labore eiusmod cillum excepteur. Cillum officia minim sint deserunt.</p>
+    <p>Elit officia ea deserunt reprehenderit. Dolor esse veniam minim commodo nulla eiusmod duis ut amet laborum.</p>
+    <!-- Nesemantiniai elementai, kuriems suteikiama kodo semantika su CSS klasėmis -->
+    <div class="komentarai">
+      <div class="komentaras">
+        <div class="vardas">Rimas</div>
+        <div class="tekstas">Nebemiegu naktimis 😭😭😭</div>
+        <div class="ivertinimai">👍200 👎10</div>
+      </div>
+      <div class="komentaras">
+        <div class="vardas">Mantas</div>
+        <div class="tekstas">Man tai visiškai neįdomu</div>
+        <div class="ivertinimai">👍3 👎87</div>
+      </div>
+    </div>
+  </article>
+</main>
+<div class="cookies">Naršydami svetainę, sutinkante su slapukų (angl. "cookies") panaudojimu.</div>
+```
+
+* `selector1, selector2, ...` - selektorių sąjunga (angl. *selector list*, "selektorių sąrašas"), pvz.:
+
+  ```css
+  h1, h2, h3, p {
+    color: #333; /* #333 => #333333, #fff => #ffffff ir pan. */
+  }
+  ```
+  Pasirenkami visi `h1`, `h2`, `h3` ir `p` elementai.
+
+  MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Selector_list
+
+* `selector1 selector2 ...` - hierarchinis kombinatorius (angl. *descendant combinator*, "palikuonio kombinatorius"): pasirenkami elementai pagal `selector2`, kurie yra `selector1` (ne)tiesioginiai vaikai, pvz.:
+
+  ```css
+  section p {
+    ...
+  }
+  ```
+  Pasirenkami visos pastraipos, kurios yra `section` elementuose, pavyzdžio atveju tik pirmo `article` pastraipos.
+
+  ```css
+  article div {
+    ...
+  }
+  ```
+  Pasirenkami visi `div` elementai, kurie yra `article` elementuose, pavyzdžio atveju visi `div` elementai paskutiniame `article` elemente.
+
+  Jeigu rašomi keli selektoriai iš eilės, pvz.: `main article.svarbu section h3`, bus pasirenkami elementai pagal paskutinį selektorių, kurie iš eilės seka selektorių hierarchiją.
+
+  MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator
+
+* `selector1 > selector2 > ...` - tiesioginio vaiko kombinatorius (angl. *child combinator*, "vaiko kombinatorius") - veikia analogiškai kaip hierarchinis kombinatorius, tačiau šiuo atveju `selector2` privalo būti tiesioginis vaikas `selector1`. Pavyzdžiui, `article > div` pasirinktų tik `<div class="komentarai">` elementą.
+
+  MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
+
+* `selector1 + selector2 + ...`: sekančio gretimo elemento kombinatorius (angl. *adjacent sibling combinator*, "gretimo brolio/sesers kombinatorius") - juo pasirenkamas tame pačiame lygyje esantis `selector1` selektorių griežtai sekantis elementas, jei jis atitinka `selector2`. Pvz.:
+
+  ```css
+  h2 + p {
+    ...
+  }
+  ```
+
+  Šiuo atveju bus pasirenkami `p` elementai, kurie eina iš karto po `h2` elementų, t.y. `Aliquip officia nisi in nisi eiusmod minim excepteur ...` ir `Esse minim ut ut labore eiusmod ...` pastraipos, **tačiau** ne `Elit officia ea deserunt reprehenderit. ...` pastraipa, nes ji nėra gretima `h2` elementui.
+
+
+  Kitas pavyzdys:
+  ```css
+  article:first-child + article {
+    ...
+  }
+  ```
+
+  Su šiuo selektoriumi bus pasirinktas tik antras `article` elementas.
+
+  MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator
+
+* `selector1 ~ selector2 ~ ...` - sekančių elementų selektorius (angl. *general sibling combinator*, "bendro brolio/sesers kombinatorius") - veikia lygiai kaip `+` selektorius, tačiau pasirenka visus sekančius elementus, o ne tik griežtai sekantį. Selektorius `h2 ~ p` pasirinks **ir** `Elit officia ea deserunt reprehenderit. ...` pastraipą ir `article:first-child + article` selektorius pasirinks visus `article` elementus nuo antro.
+
+Pasibandymui: kokie elementai bus pasirinkti su šiais selektoriais?
+
+1. `.svarbu p`
+2. `.turinys > h2 + p`
+3. `article, section > p`
+
+[Atsakymai](#atsakymai-selektoriai) gale
+
+## Atsakymai į praktikos užduotis
+
+<a name="atsakymai-selektoriai">
+### Sudėtingesni CSS selektoriai, naudojant kombinatorius
+</a>
+
+1. `.svarbu p` - 4 pastraipos:
+
+  ```html
+  <p>Id et id excepteur mollit enim reprehenderit eiusmod ipsum tempor magna ad sint adipisicing ipsum.</p>
+  <p>Anim laborum in est nisi veniam commodo excepteur proident elit qui deserunt deserunt ad.</p>
+  <p>Deserunt Lorem esse id nulla in irure elit magna pariatur cillum occaecat tempor.</p>
+  <p>Elit eu non culpa aute ea magna. Minim nulla ad exercitation nulla. Reprehenderit est et ipsum culpa nostrud consequat ex adipisicing consectetur nisi.</p>
+  ```
+
+2. `.turinys > h2 + p` - niekas, nes nėra nė vieno `h2` elemento, kuris būtų tiesioginis `<main class="turinys">` elemento vaikas.
+3. `section, article > p` - visi `section` elementai bei šios pastraipos:
+
+  ```html
+  <p>Aliquip officia nisi in nisi eiusmod minim excepteur eiusmod ut aute ad labore elit. Aliquip nostrud consequat deserunt esse in eiusmod amet dolore fugiat consequat nulla consectetur id. Est minim sunt elit ea tempor sunt irure culpa anim cillum dolor. Est deserunt aliqua do qui in voluptate in cillum sit. Laborum minim esse esse anim eu consectetur quis ea magna in.</p>
+  <p>Esse minim ut ut labore eiusmod cillum excepteur. Cillum officia minim sint deserunt.</p>
+  <p>Elit officia ea deserunt reprehenderit. Dolor esse veniam minim commodo nulla eiusmod duis ut amet laborum.</p>
+  ```
