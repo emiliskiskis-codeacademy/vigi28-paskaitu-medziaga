@@ -1,5 +1,32 @@
-# CodeAcademy HTML/CSS/JS 1 lygio konspektas
+<h1>CodeAcademy HTML/CSS/JS 1 lygio konspektas</h1>
 
+- [HTML](#html)
+  - [Kas yra HTML?](#kas-yra-html)
+  - [HTML sintaksė](#html-sintaksė)
+    - [Atributai](#atributai)
+    - [Savaime užsidarančios žymės (angl. *self-closing tags*)](#savaime-užsidarančios-žymės-angl-self-closing-tags)
+  - [Paprastų žymių sąrašas](#paprastų-žymių-sąrašas)
+  - [HTML karkasas](#html-karkasas)
+  - [HTML lentelės](#html-lentelės)
+  - [HTML formos](#html-formos)
+- [CSS](#css)
+  - [Apie CSS](#apie-css)
+  - [CSS sintaksė](#css-sintaksė)
+  - [CSS selektoriai](#css-selektoriai)
+  - [Paprasti CSS atributai](#paprasti-css-atributai)
+  - [Sudėtingesni CSS selektoriai, naudojant kombinatorius](#sudėtingesni-css-selektoriai-naudojant-kombinatorius)
+  - [CSS pseudoklasės](#css-pseudoklasės)
+  - [Flexbox](#flexbox)
+  - [Grid](#grid)
+  - [Prisitaikantys puslapiai (*responsive websites*) naudojant @media](#prisitaikantys-puslapiai-responsive-websites-naudojant-media)
+  - ["Mobile-first" dizainas](#mobile-first-dizainas)
+  - [CSS karkasai (*frameworks*)](#css-karkasai-frameworks)
+  - [CSS preprocesoriai (*preprocessors*)](#css-preprocesoriai-preprocessors)
+  - [Git + Github](#git--github)
+- [Atsakymai į praktikos užduotis](#atsakymai-į-praktikos-užduotis)
+  - [Sudėtingesni CSS selektoriai, naudojant kombinatorius](#sudėtingesni-css-selektoriai-naudojant-kombinatorius-1)
+
+# HTML
 
 ## Kas yra HTML?
 HTML (HyperText Markup Language) yra pats pagrindinis žiniatinklio kūrimo elementas. Jis apibrėžia interneto turinio prasmę ir struktūrą. Kitos technologijos, išskyrus HTML, paprastai naudojamos aprašyti tinklalapio išvaizdą / pristatymą (CSS) arba funkcionalumą / elgesį (JavaScript).
@@ -64,6 +91,30 @@ Pvz.:
 ```html
 <img src="DCIM_2022-02-13_12_30.jpg" alt="Lietuvos kraštovaizdis">
 ```
+
+### Savaime užsidarančios žymės (angl. *self-closing tags*)
+
+Kaip buvo paminėta apie `<img>` žymę, yra tam tikri elementai, kurie neturi uždaromosios žymės, nes niekada neturi vidinio turinio.
+
+Šios žymės kartais rašomos su pasviruoju brūkšniu prieš `>` ženklą, štai taip:
+
+```html
+<tag />
+```
+
+Taip akivaizdžiau, kada žymė yra savaime užsidaranti ir neturi turinio. Šį brūkšnį galima rašyti tik tada, kai žymė yra savaime užsidaranti (pvz., `<p /> </p>` būtų neteisinga).
+
+Keli pavyzdžiai:
+
+- `<br />`
+- `<hr />`
+- `<img />`
+- `<input />`
+- `<link />`
+- `<meta />`
+- `<source />`
+
+Pilnas (ne kiek didesnis) sąrašas: [http://xahlee.info/js/html5_non-closing_tag.html](http://xahlee.info/js/html5_non-closing_tag.html)
 
 ## Paprastų žymių sąrašas
 
@@ -170,29 +221,11 @@ Pvz.:
 * `<title>` - nustato puslapio (skirtuko) pavadinimą.
 * `<body>` - elementas, kuriame yra visas matomas puslapio turinys.
 
-### Savaime užsidarančios žymės (angl. *self-closing tags*)
+## HTML lentelės
 
-Kaip buvo paminėta apie `<img>` žymę, yra tam tikri elementai, kurie neturi uždaromosios žymės, nes niekada neturi vidinio turinio.
+## HTML formos
 
-Šios žymės kartais rašomos su pasviruoju brūkšniu prieš `>` ženklą, štai taip:
-
-```html
-<tag />
-```
-
-Taip akivaizdžiau, kada žymė yra savaime užsidaranti ir neturi turinio. Šį brūkšnį galima rašyti tik tada, kai žymė yra savaime užsidaranti (pvz., `<p /> </p>` būtų neteisinga).
-
-Keli pavyzdžiai:
-
-- `<br />`
-- `<hr />`
-- `<img />`
-- `<input />`
-- `<link />`
-- `<meta />`
-- `<source />`
-
-Pilnas (ne kiek didesnis) sąrašas: [http://xahlee.info/js/html5_non-closing_tag.html](http://xahlee.info/js/html5_non-closing_tag.html)
+# CSS
 
 ## Apie CSS
 
@@ -384,13 +417,27 @@ Pasibandymui: kokie elementai bus pasirinkti su šiais selektoriais?
 2. `.turinys > h2 + p`
 3. `article, section > p`
 
-[Atsakymai](#atsakymai-selektoriai) gale
+[Atsakymai](#sudėtingesni-css-selektoriai-naudojant-kombinatorius-1)
 
-## Atsakymai į praktikos užduotis
+## CSS pseudoklasės
 
-<a name="atsakymai-selektoriai">
-### Sudėtingesni CSS selektoriai, naudojant kombinatorius
-</a>
+## Flexbox
+
+## Grid
+
+## Prisitaikantys puslapiai (*responsive websites*) naudojant @media
+
+## "Mobile-first" dizainas
+
+## CSS karkasai (*frameworks*)
+
+## CSS preprocesoriai (*preprocessors*)
+
+## Git + Github
+
+# Atsakymai į praktikos užduotis
+
+## Sudėtingesni CSS selektoriai, naudojant kombinatorius
 
 1. `.svarbu p` - 4 pastraipos:
 
