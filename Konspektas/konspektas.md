@@ -15,7 +15,7 @@
   - [CSS selektoriai](#css-selektoriai)
   - [Paprasti CSS atributai](#paprasti-css-atributai)
   - [Sudėtingesni CSS selektoriai, naudojant kombinatorius](#sudėtingesni-css-selektoriai-naudojant-kombinatorius)
-  - [CSS pseudoklasės](#css-pseudoklasės)
+  - [CSS pseudoklasės (*pseudo-classes*)](#css-pseudoklasės-pseudo-classes)
   - [Flexbox](#flexbox)
   - [Grid](#grid)
   - [Prisitaikantys puslapiai (*responsive websites*) naudojant @media](#prisitaikantys-puslapiai-responsive-websites-naudojant-media)
@@ -24,7 +24,7 @@
   - [CSS preprocesoriai (*preprocessors*)](#css-preprocesoriai-preprocessors)
   - [Git + Github](#git--github)
 - [Atsakymai į praktikos užduotis](#atsakymai-į-praktikos-užduotis)
-  - [Sudėtingesni CSS selektoriai, naudojant kombinatorius](#sudėtingesni-css-selektoriai-naudojant-kombinatorius-1)
+  - [Sudėtingesni CSS selektoriai](#sudėtingesni-css-selektoriai)
 
 # HTML
 
@@ -411,15 +411,49 @@ Pasidarykime pavyzdinę HTML struktūrą:
 
 * `selector1 ~ selector2 ~ ...` - sekančių elementų selektorius (angl. *general sibling combinator*, "bendro brolio/sesers kombinatorius") - veikia lygiai kaip `+` selektorius, tačiau pasirenka visus sekančius elementus, o ne tik griežtai sekantį. Selektorius `h2 ~ p` pasirinks **ir** `Elit officia ea deserunt reprehenderit. ...` pastraipą ir `article:first-child + article` selektorius pasirinks visus `article` elementus nuo antro.
 
+<p id="css-selektoriai-uzduotys">
 Pasibandymui: kokie elementai bus pasirinkti su šiais selektoriais?
+</p>
 
 1. `.svarbu p`
 2. `.turinys > h2 + p`
 3. `article, section > p`
 
-[Atsakymai](#sudėtingesni-css-selektoriai-naudojant-kombinatorius-1)
+[Atsakymai](#sudėtingesni-css-selektoriai)
 
-## CSS pseudoklasės
+## CSS pseudoklasės (*pseudo-classes*)
+
+CSS turi keletą elementų pobūdį apibūdančias klases, pavyzdžiui, kokius ryšius jis turi elementų hierarchijoje arba kokie veiksmai yra atliekami su juo (pasirinkimas, užvedimas su pelyte) ir panašiai. Šios ne su `class` atributu nurodytos klasės yra vadinamos pseudoklasėmis.
+
+Svarbesnių pseudoklasių sąrašas:
+
+* Hierarchinės:
+  * `:first-child` - elementas yra tėvinio elemento pirmas vaikas
+  * `:last-child` - elementas yra tėvinio elemento paskutinis vaikas
+  * `:first-of-type` - elementas yra tėvinio elemento pirmas tokios žymės vaikas
+  * `:last-of-type` - elementas yra tėvinio elemento paskutinis tokios žymės vaikas
+  * `:nth-child()` - n-tas vaikas, tarp skliaustelių galime įrašyti skaičių pradedant nuo 1, taip pat panaudoti išraiškas su `n`, pvz. `2n`, `3n + 2`, arba parašyti `even` (lyginis) arba `odd` (nelyginis).
+  * `:nth-last-child()` - taip pat kaip `:nth-child()`, tik skaičiuojama nuo galo.
+  * `:nth-of-type()` - taip pat kaip `:nth-child()`, tačiau pasirenkami elementai pagal žymės panaudojimo pasikartojimą, kaip su `:first-of-type`/`:last-of-type` pseudoklasėmis.
+  * `:nth-last-of-type()` - kaip `:nth-of-type()`, tik skaičiuojama nuo galo.
+* Būsenos:
+  * `:hover` - kai pelytė užvesta virš elemento
+  * `:focus` - kai elementas yra pasirinktas (sufokusuotas), pvz. pasirinktas įvedimo laukas
+  * `:active` - kai elementas yra spaudžiamas, pvz. spaudžiama nuoroda ar mygtukas
+  * `:link` - kai nuoroda yra neaplankyta (naršyklės istorijoje nėra įrašo)
+  * `:visited` - kai nuoroda yra aplankyta
+  * `:target` - kai į elementą buvo nueita paspaudus nuorodą (nuoroda baigiasi kokiu nors id (pvz. `#main`) ir elementas turi atitinkamą `id` atributą (pvz. `id="main"`)
+* Įvesties laukų (`<input>`):
+  * `:autofill` - laukas buvo užpildytas automatiškai, pasinaudojant naršyklės automatinio užpildymo įrankiu
+  * `:disabled` - laukas yra neaktyvus (turi atributą `disabled=""`)
+  * `:read-only` - lauko turinys neredaguojamas (turi atributą `readonly=""`)
+  * `:checked` - `<input type="radio">` arbar `<input type="checkbox">` įvedimo laukas yra pažymėtas
+  * `:invalid` - lauke įvesta informacija yra nevalidi, pvz. `<input required="">` yra tuščias.
+  * `:required` - laukas yra privalomas (turi `required=""` atributą)
+
+Pseudoklases galima naudoti kaip paprastas klases rašydami selektorius, tokius kaip `:first-child`, `button:hover`, `input:required:invalid`.
+
+Pilnas sąrašas: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
 
 ## Flexbox
 
@@ -437,7 +471,9 @@ Pasibandymui: kokie elementai bus pasirinkti su šiais selektoriais?
 
 # Atsakymai į praktikos užduotis
 
-## Sudėtingesni CSS selektoriai, naudojant kombinatorius
+## Sudėtingesni CSS selektoriai
+
+[Atgal į užduotis](#css-selektoriai-uzduotys)
 
 1. `.svarbu p` - 4 pastraipos:
 
