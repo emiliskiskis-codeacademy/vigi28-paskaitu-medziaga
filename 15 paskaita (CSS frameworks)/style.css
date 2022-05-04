@@ -1,0 +1,26 @@
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 400;
+}
+
+h2 {
+  line-height: 1;
+}
+
+.orange {
+  color: hsl(26, 100%, 55%);
+  letter-spacing: 1.5px;
+}
+
+.bg-orange {
+  background-color: hsl(26, 100%, 55%);
+  color: white;
+}
+
+.is-strikethrough {
+  text-decoration: line-through;
+}
+
+.button {
+  box-shadow: hsl(25, 100%, 87%) 0px 30px 20px -10px;
+}
