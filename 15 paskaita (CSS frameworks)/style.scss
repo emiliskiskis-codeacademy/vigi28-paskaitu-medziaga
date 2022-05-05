@@ -1,0 +1,69 @@
+$primary: hsl(26, 100%, 55%);
+
+$family-sans-serif: "Kumbh Sans", sans-serif;
+@import "bulma/bulma.sass";
+
+.is-strikethrough {
+  text-decoration: line-through;
+}
+
+.button {
+  box-shadow: hsl(25, 100%, 87%) 0px 30px 20px -10px;
+}
+
+@mixin center-flex {
+  align-items: center;
+  justify-content: center;
+}
+
+header > .container {
+  height: 4rem;
+  padding: 0 20px;
+
+  > * {
+    height: 1.5rem;
+    > * {
+      height: 100%;
+    }
+  }
+  > .right {
+    display: flex;
+    @include center-flex();
+    gap: 10px;
+  }
+}
+
+.small {
+  height: 80%;
+}
+
+.flex {
+  display: flex;
+  &.vcenter {
+    align-items: center;
+  }
+  &.hcenter {
+    justify-content: center;
+  }
+  &.center {
+    @include center-flex();
+  }
+  > .left {
+    flex: 1;
+  }
+}
+
+@media (min-width: $tablet) {
+  .price-container {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+}
+
+.section img {
+  border-radius: 10px;
+}
+
+h2 {
+  line-height: 1;
+}
