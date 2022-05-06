@@ -461,11 +461,279 @@ Pilnas sąrašas: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classe
 
 ## Prisitaikantys puslapiai (*responsive websites*) naudojant @media
 
+Kad tas pats HTML turinys būtų rodomas skirtingu išdėstymu skirtinguose ekranuose, galime rašyti CSS media užklausas (*media queries*), kad tam tikri stiliai būtų pritaikyti tam tikroje situacijoje, dažniausiai pagal ekrano dydį (plotį).
+
+Sintaksė nesudėtinga:
+
+```css
+@media (attribute: value) {
+
+}
+```
+
+Parašę `@media`, galime patikrinti, ar tam tikras aplinkos kintamasis (pvz. ekrano plotis, aukštis, kryptis) atitinka reikšmę. Sakykime, jei norime pritaikyti stilius, jei ekrano plotis yra bent 800 pikselių, rašytume `@media (min-width: 800px)`, pvz.:
+
+```css
+/* Įprastas CSS */
+.container {
+
+}
+...
+
+/* Media užklausa pirmame lygmenyje */
+@media (min-width: 800px) {
+  /* Rašome stilius viduje */
+  .container {
+    ...
+  }
+  .container > .item {
+    ...
+  }
+}
+```
+
+Jeigu norime sujungti kelias sąlygas į vieną `@media` užklausą, sujungiame jas su žodeliu `and`. Pavyzdžiui, patikrinti, ar ekranas yra tarp `800px` ir `1200px`, rašytume taip:
+
+```css
+@media (min-width: 800px) and (max-width: 1200px) {
+
+}
+```
+
+Auga "Media Queries Level 4" specifikacijos palaikymas, kur galime nurodyti palyginimo ženklus sąlygose, pvz.:
+
+```css
+/* Aukštis daugiau nei 600px */
+@media (height > 600px) {
+  body { line-height: 1.4; }
+}
+
+/* Plotis tarp 400px ir 700px */
+@media (400px <= width <= 700px) {
+  body { line-height: 1.4; }
+}
+```
+
+MDN: <https://developer.mozilla.org/en-US/docs/Web/CSS/@media>
+
 ## "Mobile-first" dizainas
+
+Didžioji dalis interneto vartotojų šiais laikais naudojasi mobiliais įrenginiais su mažu ekranu[^1], taigi norint pasiekti didžiausią vartotojų rinką, protingiausia yra pagrindinį puslapio vaizdą pritaikyti telefonui, o tik antrinį staliniam kompiuteriui (desktop'ui).
+
+Pagrinde tai yra dizaino sprendimai, tačiau rašant CSS kodą šiek tiek pasikeičia jo rašymo tvarka - vietoj to, kad pirmiausiai rašytume desktop CSS, o paskui su `@media` užklausomis pritaikytume prie mobile, pirmiausia rašome mobile CSS, o paskui pritaikome prie desktop.
+
+Nedidelis pavyzdys:
+
+Desktop first:
+```css
+html { background: red; }
+
+@media (max-width: 600px) {
+  html { background: green; }
+}
+```
+
+Mobile first:
+
+```css
+html { background: red; }
+
+@media (min-width: 600px) {
+  html { background: green; }
+}
+```
+
+[^1]: Kol kas neturiu šaltinio
 
 ## CSS karkasai (*frameworks*)
 
+CSS karkasai leidžia kurti gražiai atrodančius puslapius panaudojant kitų žmonių parašytus CSS stilius, pritaikant juos savo puslapiui.
+
+Keli CSS (kartais su JS) karkasų pavyzdžiai:
+
+* Bootstrap <https://getbootstrap.com/> (bene populiariausias)
+* Bulma <https://bulma.io/>
+* Material Design <https://material.io/>
+
+Išsamesnis sąrašas: <https://github.com/troxler/awesome-css-frameworks>
+
+Mūsų atveju, prieš pradedant dirbti su JS, lengviausia įsirašyti šiuos karkasus įterpiant nurodytas `<link>` žymes į CDN (Content Delivery Network) nuorodas, pvz.:
+
+```html
+<!-- Bulma -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- Material Design neįrašomas naudojant CDN -->
+```
+
 ## CSS preprocesoriai (*preprocessors*)
+
+CSS preprocesoriai leidžia rašyti CSS kodą su papildomu funkcionalumu, kuris paskui yra paverčiamas į standartinį CSS kodą.
+
+Du populiariausi CSS preprocesoriai yra:
+
+* Sass (<https://sass-lang.com/>) - suteikia daug funkcionalumo, tačiau sunkiau išmokstamas
+* Less (<https://lesscss.org/>) - suteikia kiek mažiau funkcionalumo, tačiau veikia greitai ir yra nesudėtingas.
+
+Programuojant VS Code, patarčiau naudoti šiuos įrankius:
+
+  * Su Sass - Sass plėtinys ([syler.sass-indented](https://marketplace.visualstudio.com/items?itemName=Syler.sass-indented)) ir `sass` terminalo programa (įsirašome su `npm i -g sass`)
+  * Su Less - Easy LESS plėtinys ([mrcrowl.easy-less](https://marketplace.visualstudio.com/items?itemName=mrcrowl.easy-less))
+
+
+Įsirašyti `npm` galima iš <https://nodejs.org/en/> puslapio su installeriu per Windows arba naudojant Homebrew (`brew`) Mac'e.
+
+Keli papildomų galimybių pavyzdžiai, kurie yra abiejuose (ir dažniausiai kituose) preprocesoriuose:
+
+* Nesting (selektorių dėjimas vienas į kitą)
+
+  ```less
+  selector1 {
+    color: white;
+    selector2 {
+      color: blue;
+    }
+  }
+  ```
+
+  pavirsta
+
+  ```less
+  selector1 {
+    color: white;
+  }
+  selector1 selector2 {
+    color: blue;
+  }
+  ```
+
+  Tokioje hierarchijoje galima išreikšti bet kokį įprastą ryšį kaip ir paprastame CSS'e, pvz.:
+
+  - `selector1 > selector2` -> `selector1 { > selector2 }`
+  - `selector1 + selector2` -> `selector1 { + selector2 }`
+
+  ir t.t.
+
+  Jeigu norime parašyti papildomą išraišką, kuri yra hierarchiškai tame pačiame lygmenyje, pvz. turėti `.container .item:not(:first-child)`, galima panaudoti `&` simbolį, kad išreikšti esamą selektorių:
+
+  ```less
+  .container {
+    display: flex;
+    > .item {
+      flex: 1;
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
+    }
+  }
+  ```
+
+  pavirsta
+
+  ```less
+  .container {
+    display: flex;
+  }
+  .container > .item {
+    flex: 1;
+  }
+  .container > .item:not(:first-child) {
+    margin-left: 10px;
+  }
+  ```
+
+* Kintamieji
+
+  Su kintamaisiais galime lengvai perpanaudoti besikartojančias reikšmes, pvz. puslapio paletės spalvas, tarpus tarp elementų ir pan.
+
+  Pavyzdys (su Less sintakse):
+
+  ```less
+  @primary: rgb(29, 54, 93);
+  @white: #eee;
+  @black: #333;
+  @gap: 10px;
+
+  .container {
+    background-color: @white;
+    > .item {
+      color: @primary;
+
+      &:not(:first-child) {
+        margin-left: @gap;
+      }
+    }
+  }
+  ```
+
+  pavirsta
+
+  ```less
+  .container {
+    background-color: #eee;
+  }
+  .container > .item {
+    color: rgb(29, 54, 93);
+  }
+  .container > .item:not(:first-child) {
+    margin-left: 10px;
+  }
+  ```
+
+* *Mixins*
+
+  *Mixins* galime panaudoti, kad perpanaudotume CSS kodą kartu su atributais. Principas *mixin* yra kodo įterpimas, perpanaudojimas kitoje vietoje.
+
+  Pavyzdys (Less sintakse):
+
+  ```less
+  .flexCenter() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    .flexCenter();
+
+    > .item {
+      .flexCenter();
+    }
+  }
+  ```
+
+  pavirsta
+
+  ```less
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container > .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ```
+
+Naudojant CSS preprocesorius kartu su karkasais (*frameworks*), galima lengvai pakeisti nemažą dalį karkaso funkcionalumo. Pavyzdžiui, Bulma CSS karkasas leidžia pakeisti paletės spalvas ar kitus kintamuosius su Sass iš pradžių nurodant keičiamų kintamųjų reikšmes, o paskui įtraukiant Bulma:
+
+```scss
+$primary: rgb(29, 54, 93);
+$white: #eee;
+$black: #333;
+$gap: 10px;
+
+@import('/path/to/bulma/bulma.scss');
+```
+
+MDN: <https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor>
 
 ## Git + Github
 
@@ -492,3 +760,5 @@ Pilnas sąrašas: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classe
   <p>Esse minim ut ut labore eiusmod cillum excepteur. Cillum officia minim sint deserunt.</p>
   <p>Elit officia ea deserunt reprehenderit. Dolor esse veniam minim commodo nulla eiusmod duis ut amet laborum.</p>
   ```
+
+Planavau padaryti daugiau užduočių, tačiau neturėjau daug laiko ir teko atidėti šią užduotį kitam kartui.
