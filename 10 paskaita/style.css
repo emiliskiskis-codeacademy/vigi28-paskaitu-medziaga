@@ -3,11 +3,11 @@
   background-color: purple;
   padding: 10px;
   flex-wrap: wrap;
-  
+
   /* flex-direction: row; Numatytoji
   flex-direction: column;
   flex-direction: row-reverse;
-  flex-direction: row-reverse; */
+  flex-direction: column-reverse; */
 
   /* flex-wrap: nowrap; Numatytoji
   flex-wrap: wrap;
@@ -57,5 +57,5 @@
 }
 
 .item:nth-child(2n) {
-  /* order: 1; */
+  order: 1;
 }

@@ -457,7 +457,169 @@ Pilnas sąrašas: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classe
 
 ## Flexbox
 
+Flexbox yra įrankis patogiai išdėlioti bet kokio dydžio elementus įvairiomis kryptimis. Kadangi aprašyti veikimo principus užtruktų labai ilgai ir reikalauja demonstracijų, čia aprašysiu tik CSS atributus.
+
+Paskaitų įrašai: [Pirma](https://codeacademylt.sharepoint.com/:v:/r/sites/VIGI28Kaunas/Shared%20Documents/General/Recordings/Meeting%20in%20_General_-20220420_180005-Meeting%20Recording.mp4?csf=1&web=1&e=oBdJqb) [Antra](https://codeacademylt.sharepoint.com/:v:/r/sites/VIGI28Kaunas/Shared%20Documents/General/Recordings/Meeting%20in%20_General_-20220421_180219-Meeting%20Recording.mp4?csf=1&web=1&e=N2qWFC)
+
+Pagrindinė Flexbox HTML struktūra:
+
+```html
+<div class="container">
+  <div class="item">...</div>
+  <div class="item">...</div>
+  <div class="item">...</div>
+  <div class="item">...</div>
+</div>
+```
+
+Naudoti `div` ar klasių nebūtina, tačiau visa esmė - Flexbox'e yra flex containeris ir flex itemai. Flex containeris talpina flex itemus ir juos sudeda pagal jų dydžius, o flex itemams galime nurodyti, kaip jie elgiasi flex containeryje.
+
+Nurodytai HTML struktūrai turėtume pritaikyti minimalų CSS:
+
+```css
+.container {
+  display: flex;
+  /* arba */
+  display: inline-flex;
+  /*
+    Vienintelis skirtumas - flex yra blokinis elementas,
+    o inline-flex yra įterptinis (inline) elementas
+  */
+}
+```
+
+Atributai, kuriuos galima priskirti `display: flex`/`inline-flex` elementui:
+
+* `flex-direction` - elementų dėliojimo kryptis.
+  
+  Galimos reikšmės:
+  
+  * `row` (numatytoji) - dėlioja elementus iš kairės į dešinę
+  * `column` - dėlioja elementus iš viršaus į apačią
+  * `row-reverse` - dėlioja elementus iš dešinės į kairę
+  * `column-reverse` - dėlioja elementus iš apačios į viršų
+  
+* `flex-wrap` - nurodo, ar elementai, netelpantys į containerio plotį ar aukštį pagal dėliojimo kryptį, yra perkeliami į naują eilutę ar stulpelį.
+
+  Galimos reikšmės:
+
+  * `nowrap` (numatytoji) - elementai nebus perkeliami
+  * `wrap` - elementai bus perkeliami
+  * `wrap-reverse` - elementai bus perkeliami į priešingą kryptį normaliam išdėstymui - jei `flex-direction: row`, tai naujos eilutės bus aukščiau, jei `flex-direction: column`, bus kairiau.
+  
+* `flex-flow` - leidžia nurodyti `flex-direction` ir `flex-wrap` atributus kartu.
+  
+  Aprašymo būdas: `flex-flow: <flex-direction> <flex-wrap>`, tarp `<>` įrašomos tiems atributams galimos reikšmės.
+* `justify-content` - sulygiuoja elementus pagrindinėje flex containerio ašyje (horizontaliai jei `row`, vertikaliai jei `column`)
+
+  Galimos reikšmės:
+
+  * `flex-start` (numatytoji) - elementai prišliejimi prie flex containerio pradžios (ji yra priešingoje pusėje, jei darome `row-reverse` arba `column-reverse`)
+  * `flex-end` - elementai prišliejami prie flex containerio pabaigos
+  * `center` - elementai sulygiuojami per vidurį
+  * `space-between` - elementai prišliejami prie abiejų pusių, neužpildyta containerio vieta tolygiai paskirstoma tarp elementų
+  * `space-evenly` - kaip `space-between`, bet tarpai pridedami iš kairės pusės pirmam elementui bei iš dešinės pusės dešiniam elementui
+  * `space-around` - kaip `space-evenly`, bet kraštinių elementui tarpas nuo krašto yra perpus mažesnis (susidaro įprasto dydžio tarpas, jei įsivaizduojame containerio elementus išdėstytus apskritimu, kur pradžia ir pabaiga susijungia)
+
+* `align-items` - sulygiuoja kiekvienos eilutės ar stulpelio elementus antrinėje ašyje (vertikaliai jei `row`, horizontaliai jei `column`)
+
+  Galimos reikšmės:
+  * `flex-start` - elementai prišliejimi prie antrinės ašies pradžios (ji yra priešingoje pusėje, jei darome `row-reverse` arba `column-reverse`) - viršuje jei `row`, kairėje jei `column`
+  * `flex-end` - elementai prišliejami prie antrinės ašies pabaigos - apačioje jei `row`, dešinėje jei `column`
+  * `center` - elementai sulygiuojami per vidurį
+  * `stretch` (numatytoji) - išdidina vidinių elementų aukščius, kad pilnai užpildytų visą eilutę ar stulpelį.
+  
+* `align-content` - sulygiuoja visas eilutes ar stulpelius visame flex containeryje
+
+  Galimos reikšmės tokios kaip su `align-items`, tačiau jos lygiuoja visus flexbox eilutes/stulpelius, o ne pavienius elementus, ir galimos trys papildomos:
+
+  * `space-between`
+  * `space-evenly`
+  * `space-around`
+
+  Visos veikia kaip ir su `justify-content` atributu, tik kitoje ašyje.
+
+Atributai, kuriuos galima priskirti flex itemams:
+
+* `flex-grow` - padidina elemento dydį tiek, kad užpildytų likusią containerio vietą. Nurodyta reikšmė parodo, kokia dalis laisvos vietos atitenka santykinai su kitais elementais (pagrindinė demonstracija paskaitos įraše)
+
+  Be `.item:first-child { flex-grow: 1 }`:
+
+  ![](flex-example/no-flex-10.png)
+
+  Su `.item:first-child { flex-grow: 1 }`:
+
+  ![](flex-example/flex-grow-10.png)
+
+  Be `.item { flex-grow: 1 }`:'
+
+  ![](flex-example/no-flex-5.png)
+
+  Su `.item { flex-grow: 1 }`:
+
+  ![](flex-example/flex-grow-5.png)
+  
+* `flex-shrink` - veikia panašiai kaip `flex-grow`, bet atvirkščiai - vietą, kurioje elementai išėjo už containerio ribų, susigrąžina sumažinant tam tikrus flex elementus. Nurodyta reikšmė parodo, kiek bus sumažintas elementas santykinai su kitais elementais.
+
+  Kaip suskaičiuoti, kiek sumažėja elementas:
+
+  * Containerio plotis - *c_width*
+  * Elementų pilni pločiai (su paddingais ir t.t.) - *el_width1*, *el_width2*, ...
+  * Santykių suma - *count*
+
+  Vieno santykinio vieneto dydis gaunamas iš visų elementų pločių atėmus containerio plotį ir tada padalinus iš santykių sumos:
+
+  `(el_width1 + el_width2 + ... - c_width) / count`
+
+  Pvz.:
+
+  ![](flex-example/flex-shrink.png)
+  
+  Containerio plotis 500px, 5 elementai su `flex-basis: 120px` ir `border: 3px` (galutinis plotis po 126px), ir pirmiems trims elementams pritaikom `flex-shrink: 1;`, kitiems dviems `flex-shrink: 2;`, gauname:
+
+  `(126px * 5 - 500px) / 7 ≈ 18,57px`
+
+  Elementai su `flex-shrink: 1;` sumažėja po 18,57px, su `flex-shrink: 2;` sumažėja po 37,14px.
+
+* `flex-basis` - nurodo pradinį flex itemo dydį (plotį arba aukštį), prieš pritaikant `flex-grow` ir `flex-shrink` atributus. Įprastai, tai yra tiesiog `width` arba `height` reikšmė.
+* `flex` - sudėtingas atributas, kuriam galima priskirti daug įvairių reikšmių (plačiau apie tai MDN), tačiau paprasčiausias panaudojimas - priskirti skaitinę reikšmę (0, 1, 2, ...), tokiu atveju jis nustato tris atributus vienu metu:
+
+  ```css
+  flex-grow: nurodyta skaitinė reikšmė;
+  flex-shrink: 0;
+  flex-basis: 0%; /* Svarbu - nurodo, kad elementas neturi pradinio dydžio */
+  ```
+
+  Be `.item:first-child { flex: 1 }`:
+
+  ![](flex-example/no-flex-10.png)
+
+  Su `.item:first-child { flex: 1 }`:
+
+  ![](flex-example/flex-grow-10.png)
+
+  Be `.item { flex: 1 }`:'
+
+  ![](flex-example/no-flex-5.png)
+
+  Su `.item { flex: 1 }`:
+
+  ![](flex-example/flex-5.png)
+
+* `align-self` - sulygiuoja itemą vienoje eilutėje/stulpelyje pagal antrinę ašį. Galimos reikšmės tokios pačios, kaip `align-items`.
+* `order` - nurodo elemento padėtį eilėje. Pagal nutylėjimą reikšmė 0 ir flex containeris surikiuoja elementus pagal `order` nuo mažiausio iki didžiausio, o jeigu kelių elementų `order` sutampa - pagal HTML struktūrą.
+  
+  Pavyzdžiui, nurodžius tam tikram elementui `order: -1;`, jis bus padedamas į eilės priekį, o `order: 1;` - į galą.
+
+Flex itemai taip pat gali būti ir flex containeriai, jei jiems pritaikomas `display: flex`/`inline-flex` atributas. Veikimo principas paprastas - kaip itemai, jie užima kažkiek vietos tėviniame containeryje, o kaip containeriai, savo vaikinius elementus išdėsto pagal Flexbox.
+
+MDN: <https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox>
+
 ## Grid
+
+[Paskaitos įrašas](https://codeacademylt.sharepoint.com/:v:/r/sites/VIGI28Kaunas/Shared%20Documents/General/Recordings/General-20220425_180115-Meeting%20Recording.mp4?csf=1&web=1&e=bjBgmM)
+
+MDN: <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout>
 
 ## Prisitaikantys puslapiai (*responsive websites*) naudojant @media
 
