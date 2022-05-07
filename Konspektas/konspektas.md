@@ -705,6 +705,12 @@ html { background: red; }
 }
 ```
 
+Tačiau svarbiausia yra ne kodo rašymo tvarka, o kodo trumpinimas prioritizuojant dizainą mobiliems įrenginiams ir nedaug pakeičiant jį pritaikyti jį dideliems ekranams. Pavyzdžiui, Bootstrap karkasas yra iš esmės padarytas *mobile-first*:
+
+> **Mobile first, responsive design is the goal.** Bootstrap’s CSS aims to apply the bare minimum of styles to make a layout work at the smallest breakpoint, and then layers on styles to adjust that design for larger devices. This optimizes your CSS, improves rendering time, and provides a great experience for your visitors.
+> 
+> (<https://getbootstrap.com/docs/5.1/layout/breakpoints/#core-concepts>)
+
 [^1]: Kol kas neturiu šaltinio
 
 ## CSS karkasai (*frameworks*)
@@ -898,6 +904,106 @@ $gap: 10px;
 MDN: <https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor>
 
 ## Git + Github
+
+Naudodami Git, galime lengvai sekti kodo pakeitimus ir jais pasidalinti su kitais žmonėmis.
+
+Git atsisiunčiame iš <https://git-scm.com/>, įsidiegiame su numatytais nustatymais, išskyrus pakeičiame numatytąjį teksto redaktorių iš Vim į Visual Studio Code (nebent norite išmokti naudotis Vim):
+
+![](git/install.png)
+
+Įsirašę Git, turime du pasirinkimus: naudotis terminalo programa `git` arba Visual Studio Code įrankiu Source Control ![](git/source-control-tab-vscode.png)
+
+Kaip pasiruošti naudoti Git - terminale įvykdykite šias komandas, teisingai užpildydami informaciją:
+
+```sh
+git config --global user.name "Vardas Pavardė"
+git config --global user.email "vardas.pavarde@pastas.lt" 
+```
+
+Pavyzdžiui:
+
+```sh
+git config --global user.name "Emilis Kiškis"
+git config --global user.email "emilis.kiskis@codeacademylt.onmicrosoft.com"
+```
+
+Norėdami naujame projekte sukurti repozitoriją, tinkamame kataloge parašome komandą `git init` arba paspaudžiame "Initialize Repository":
+
+![](git/source-control-initialize.png)
+
+Išsaugoti pakeitimus - pirmiausiai pažymime norimus išsaugoti pakeitimus:
+
+![](git/source-control-add.png)
+
+Po to įrašome *commit* pranešimą ir paspaudžiame <kbd>Ctrl+Enter</kbd>:
+
+![](git/source-control-commit.png)
+
+Tada įkelti pakeitimus į GitHub galime iš eilės paspaudę "Publish Branch" ir pasirinkdami, ar sukursime viešą, ar privačią repozitoriją:
+
+![](git/source-control-publish.png)
+
+Tolimesnius pakeitimus įkelti ar atsisiųsti naudosime "Sync Changes" mygtuką:
+
+![](git/source-control-sync.png)
+
+Analogiškai galime šiuos veiksmus atlikti terminale:
+
+```sh
+git init
+git add . # . nurodo, kad pridedame viso esamo katalogo pakeitimus
+git commit -m "Pakeitimo pranešimas"
+
+# Darbui su GitHub
+# Pirmiausia susikuriame repozitoriją GitHub svetainėje, toliau rašome:
+git remote add origin https://github.com/vartotojas/repozitorija.git
+  # Patogiai nuorodą galite gauti paspaudę žalią "Code" mygtuką GitHube
+git push -u origin master # pirmą kartą
+git push # tolimesni įkėlimai
+git pull # atsisiųsti pakeitimus iš GitHub
+```
+
+Jeigu repozitorijos neturime kompiuteryje, bet ji yra GitHub, paspaudžiame "Clone Repository" mygtuką:
+
+![](git/source-control-clone.png)
+
+Viršuje pasirenkame "Clone from GitHub":
+
+![](git/source-control-clone-1.png)
+
+Pasirenkame norimą atsisiųsti repozitoriją:
+
+![](git/source-control-clone-2.png)
+
+Pasirenkame "Open", kad atsidarytume atsisiųstą repozitoriją:
+
+![](git/source-control-clone-3.png)
+
+Turime atsisiųstą repozitoriją, kurioje galime atlikti visus Git veiksmus.
+
+![](git/source-control-clone-4.png)
+
+Terminale šie veiksmai būtų atliekami taip:
+
+Atsidarome repozitoriją GitHub:
+
+![](git/github-clone-1.png)
+
+Paspaudžiame "Code" mygtuką ir nusikopijuojame nuorodą:
+
+![](git/github-clone-2.png)
+
+Teisingame kataloge terminale parašome šią komandą, pradedant nuo `git clone` (pakeiskite nuorodą savąją):
+
+```sh
+# Mac terminalas / Powershell
+emilis@emilis-PC:~/Desktop/CodeAcademy$ git clone https://github.com/emiliskiskis/naujas-projektas.git
+
+# Windows komandinė eilutė
+C:/Users/emilis/Desktop/CodeAcademy> git clone https://github.com/emiliskiskis/naujas-projektas.git
+```
+
+Repozitorija bus atsiųsta į terminale nurodytą kelią (pvz. C:/Users/emilis/Desktop/CodeAcademy) kataloge "naujas-projektas".
 
 # Atsakymai į praktikos užduotis
 
