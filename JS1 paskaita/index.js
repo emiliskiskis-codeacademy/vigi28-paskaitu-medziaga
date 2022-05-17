@@ -65,3 +65,8 @@ vv
   leidžiantis įrašyti daugiau teksto
 */ nebe komentaras
 ^^
+
+dar ne/* gali būti ir vienos eilutės komentaras */nebe
+
+// pvz.
+2 + /*šita reikšmė svarbi*/ 3;
