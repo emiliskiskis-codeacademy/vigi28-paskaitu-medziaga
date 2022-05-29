@@ -8,6 +8,10 @@
   - [Paprastų žymių sąrašas](#paprastų-žymių-sąrašas)
   - [HTML karkasas](#html-karkasas)
   - [HTML lentelės](#html-lentelės)
+    - [Žymės](#žymės)
+    - [Lentelės kraštinės](#lentelės-kraštinės)
+    - [*border-collapse*](#border-collapse)
+    - [Langelių sujungimas](#langelių-sujungimas)
   - [HTML formos](#html-formos)
 - [CSS](#css)
   - [Apie CSS](#apie-css)
@@ -222,6 +226,103 @@ Pilnas (ne kiek didesnis) sąrašas: [http://xahlee.info/js/html5_non-closing_ta
 * `<body>` - elementas, kuriame yra visas matomas puslapio turinys.
 
 ## HTML lentelės
+
+### Žymės
+
+* `<table>` - apima visą lentelės turinį
+* `<thead>` - lentelės stulpelių pavadinimų sritis
+* `<tbody>` - lentelės duomenų sritis
+* `<tfoot>` - suvestinių (pvz. sumo) sritis
+* `<th>` - lentelės stulpelio pavadinimas
+* `<tr>` - lentelės eilutė
+* `<td>` - lentelės langelis
+* `<caption>` - lentelės pavadinimas
+* `<colgroup>` - lentelės stulpelių aprašymas (skirta paprastensiam CSS apipavidalinimui)
+* `<col>` - lentelės stulpelio aprašymas, rašomas `<colgroup>` elemente
+
+Pavyzdinė lentelės struktūra:
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Vardas</th>
+      <th>Pavardė</th>
+      <th>Gimimo data</th>
+      <th>Gyvenamoji vieta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Emilis</td>
+      <td>Kiškis</td>
+      <td>2000-05-12</td>
+      <td>Vilnius</td>
+    </tr>
+    <tr>
+      <td>Bill</td>
+      <td>Gates</td>
+      <td>1955-10-28</td>
+      <td>Seattle</td>
+    </tr>
+    <tr>
+      <td>Tim</td>
+      <td>Berners-Lee</td>
+      <td>1955-06-08</td>
+      <td>London</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+Kaip atrodo naršyklėje:
+
+![](table-example/table.png)
+
+Su CSS galime apipavidalinti šią lentelę, pvz., uždėti kraštines:
+
+### Lentelės kraštinės
+
+```css
+table, th, td {
+  border: 1px solid black;
+}
+/* Kas bus, jei neįtrauksime bent vieno iš table, th, td selektoriuje? */
+```
+
+Matysime:
+
+![](table-example/table-border.png)
+
+Kraštines galima nustatyti visaip, kaip tik leidžia su `border` susiję atributai, uždėti tik apatines kraštines.
+
+### *border-collapse*
+
+Jei norime atsikratyti dvigubų kraštinių, pridedame `border-collapse: collapse`:
+
+```css
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+```
+
+Matysime:
+
+![](table-example/table-border-collapse.png)
+
+### Langelių sujungimas
+
+Galime sujungti kelis langelius, kad padarytume langelį, kuris užima kelias eilutes ar stulpelius.
+
+Tam padaryti panaudosime `rowspan` ir `colspan` atributus:
+
+* `rowspan` nurodo užimamų eilučių skaičių,
+* `colspan` nurodo užimamų stulpelių skaičių.
+
+Šiuos atributus galime pritaikyti `th` ir `td` elementams.
+
+MDN: <https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics>
 
 ## HTML formos
 
