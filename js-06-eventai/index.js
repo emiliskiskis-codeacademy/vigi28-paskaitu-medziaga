@@ -1,10 +1,14 @@
 // 2 užduotis
 
-function alertVardas() {
-  alert("Emilis");
-}
+// function alertVardas() {
+//   alert("Emilis");
+// }
 
-document.querySelector("#vardas").addEventListener("click", alertVardas);
+// document.querySelector("#vardas").addEventListener("click", alertVardas);
+
+document.querySelector("#vardas").addEventListener("click", function () {
+  alert("Emilis");
+});
 
 // 3 užduotis
 function insertAboutMe() {
