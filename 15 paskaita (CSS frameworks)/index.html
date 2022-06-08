@@ -1,88 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <title>Frontend Mentor | E-commerce product page</title>
 
-  <title>Frontend Mentor | E-commerce product page</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <header>
-    <div class="container is-widescreen is-max-desktop flex center">
-      <div class="left">
-        <img src="images/logo.svg">
-      </div>
-      <div class="right">
-        <img class="small" src="images/icon-cart.svg">
-        <img src="images/image-avatar.png">
-      </div>
-    </div>
-  </header>
-  <main>
-    <section class="section">
-      <div class="container is-widescreen is-max-desktop">
-        <div class=" columns is-vcentered">
-          <div class="column">
-            <img src="images/image-product-1.jpg">
-          </div>
-          <div class="column mx-5">
-            <p class="has-text-primary has-text-weight-bold is-uppercase">Sneaker Company</p>
-            <h2 class="my-4 is-size-3-mobile is-size-1-tablet has-text-weight-bold">Fall Limited Edition Sneakers</h2>
-
-            <p class="my-4">
-              These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
-              they'll
-              withstand everything the weather can offer.
-            </p>
-
-            <div class="price-container flex center mb-4">
-              <div class="current-price-container left flex vcenter">
-                <div class="current-price is-size-4 has-text-weight-bold">$125.00</div>
-                <div class="mx-4 discount tag is-warning">50%</div>
-              </div>
-              <div class="right">
-                <div class="old-price has-text-weight-bold has-text-grey-lighter is-strikethrough float-right">
-                  $250.00
-                </div>
-              </div>
-            </div>
-
-            <button class="mb-4 button is-primary is-rounded is-fullwidth has-text-weight-bold">
-              <img src="images/icon-cart.svg">
-              Add to cart
-            </button>
-          </div>
+  <body>
+    <header>
+      <div class="container is-widescreen is-max-desktop flex center">
+        <div class="left">
+          <img src="images/logo.svg" />
+        </div>
+        <div class="right">
+          <img class="small" src="images/icon-cart.svg" />
+          <img src="images/image-avatar.png" />
         </div>
       </div>
-    </section>
-  </main>
+    </header>
+    <main>
+      <section class="section">
+        <div class="container is-widescreen is-max-desktop">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <img src="images/image-product-1.jpg" />
+            </div>
+            <div class="column mx-5">
+              <p class="has-text-primary has-text-weight-bold is-uppercase">
+                Sneaker Company
+              </p>
+              <h2
+                class="my-4 is-size-3-mobile is-size-1-tablet has-text-weight-bold"
+              >
+                Fall Limited Edition Sneakers
+              </h2>
 
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
-</body>
+              <p class="my-4">
+                These low-profile sneakers are your perfect casual wear
+                companion. Featuring a durable rubber outer sole, they'll
+                withstand everything the weather can offer.
+              </p>
 
+              <div class="price-container flex center mb-4">
+                <div class="current-price-container left flex vcenter">
+                  <div class="current-price is-size-4 has-text-weight-bold">
+                    $125.00
+                  </div>
+                  <div class="mx-4 discount tag is-warning">50%</div>
+                </div>
+                <div class="right">
+                  <div
+                    class="old-price has-text-weight-bold has-text-grey-lighter is-strikethrough float-right"
+                  >
+                    $250.00
+                  </div>
+                </div>
+              </div>
+
+              <button
+                class="mb-4 button is-primary is-rounded is-fullwidth has-text-weight-bold"
+              >
+                <img src="images/icon-cart.svg" />
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </footer>
+    <script src="index.js"></script>
+  </body>
 </html>

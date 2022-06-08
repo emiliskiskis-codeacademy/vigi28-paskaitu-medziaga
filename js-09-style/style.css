@@ -1,0 +1,11 @@
+div.modified {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1.modified {
+  font-size: 4em;
+  color: red;
+}
