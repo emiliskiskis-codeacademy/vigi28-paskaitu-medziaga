@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies, local storage</title>
+  </head>
+  <body>
+    <form id="form">
+      <label for="username">Vartotojo vardas:</label>
+      <input id="username" type="text" autocomplete="username" />
+      <br />
+      <label for="password">Slaptažodis:</label>
+      <input id="password" type="password" autocomplete="current-password" />
+      <br />
+      <button type="submit">Prisijungti</button>
+    </form>
+    <p id="success" style="display: none"></p>
+    <button id="logout" type="button" style="display: none">Atsijungti</button>
+    <script src="localstorage.js"></script>
+  </body>
+</html>
