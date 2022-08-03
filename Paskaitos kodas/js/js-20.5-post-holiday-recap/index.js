@@ -1,122 +1,88 @@
-// query selector
-const boardElement = document.querySelector(".board");
+class GameBoard {
+  drawX(x, y) {}
 
-// style su js
-boardElement.style.gridAutoRows = boardElement.clientWidth / 3 + "px";
-
-// event listener
-window.addEventListener("resize", () => {
-  boardElement.style.gridAutoRows = boardElement.clientWidth / 3 + "px";
-});
-
-let turn = "x";
-let board = [[], [], []];
-let started = false;
-
-// let scoreX = localStorage.getItem("scoreX"),
-//   scoreO = localStorage.getItem("scoreO");
-
-// let scoreX = localStorage.getItem("scoreX");
-// if (scoreX === null) {
-//   scoreX = 0;
-// } else {
-//   scoreX = +scoreX;
-// }
-
-// Reikšmė iš scoreX, jeigu yra, kitu atveju 0
-let scoreX = +localStorage.getItem("scoreX") || 0;
-
-// Reikšmė iš scoreO, jeigu yra, kitu atveju 0
-let scoreO = localStorage.getItem("scoreO");
-if (scoreO === null) {
-  scoreO = 0;
+  drawO(x, y) {}
 }
 
-writeScore();
+class Controls {}
 
-function changeTurn() {
-  if (turn === "x") {
-    turn = "o";
-  } else {
-    turn = "x";
+class Scoreboard {
+  // laimėjimų istorija turi būti išsaugoma
+  // puslapiui persikrovus
+  constructor() {
+    this.scoreX = +localStorage.getItem("scoreX") || 0;
+    this.scoreO = +localStorage.getItem("scoreO") || 0;
+    this.scoreXEl = document.getElementById("scoreX");
+    this.scoreOEl = document.getElementById("scoreO");
+
+    this.displayScore();
+  }
+
+  incrementX() {
+    // padidinti scoreX per vieną
+    this.scoreX++;
+    this.saveScore();
+    this.displayScore();
+  }
+
+  incrementO() {
+    // padidinti scoreO per vieną
+    this.scoreO++;
+    this.saveScore();
+    this.displayScore();
+  }
+
+  saveScore() {
+    localStorage.setItem("scoreX", this.scoreX);
+    localStorage.setItem("scoreO", this.scoreO);
+  }
+
+  displayScore() {
+    this.scoreXEl.textContent = this.scoreX;
+    this.scoreOEl.textContent = this.scoreO;
+  }
+
+  clearScore() {
+    this.scoreX = 0;
+    this.scoreO = 0;
+    this.saveScore();
+    this.displayScore();
   }
 }
 
-function onStart(startingTurn) {
-  turn = startingTurn;
-  Array.from(boardElement.children).forEach(child => {
-    child.textContent = "";
-  });
-  board = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-  ];
-  started = true;
-}
+class MessageBoard {
+  // Prasidėjus žaidimui, išvalomas message board
+  // ir parašoma "Žaidimas pradedamas!"
 
-function onCellClick(i) {
-  if (!started) {
-    return;
-  }
-  if (boardElement.children[i].textContent !== "") {
-    return;
-  }
-  board[Math.floor(i / 3)][i % 3] = turn;
-  boardElement.children[i].textContent = turn;
-  checkVictory();
-  changeTurn();
-}
+  // po kiekvieno ėjimo yra parašoma "dabar 'X' arba 'O' eilė"
 
-function checkLine(line) {
-  return line.every(cell => cell === "x") || line.every(cell => cell === "o");
-}
+  // pergalės arba lygiųjų atveju parašomas rezultato pranešimas
+  // pvz. "Laimėjo X.", "Lygiosios."
 
-function checkVictory() {
-  if (board.some(checkLine)) {
-    onVictory();
+  constructor() {
+    this.messagesEl = document.querySelector(".messages");
   }
-  for (let i = 0; i < 3; i++) {
-    const column = [board[0][i], board[1][i], board[2][i]];
-    if (checkLine(column)) {
-      onVictory();
-    }
+
+  addMessage(message) {
+    // sukurti naują <p> elementą
+    // priskirti pranešimo tekstą elementui
+    // įterpti naują elementą į <div id="messages">
+
+    const messageEl = document.createElement("p");
+    messageEl.textContent = `[${new Date().toISOString()}] ${message}`;
+    this.messagesEl.prepend(messageEl);
   }
-  const diagonals = [
-    [board[0][0], board[1][1], board[2][2]],
-    [board[0][2], board[1][1], board[2][0]]
-  ];
-  if (diagonals.some(checkLine)) {
-    onVictory();
+
+  clearMessages() {
+    this.messagesEl.innerHTML = "";
   }
 }
 
-function onVictory() {
-  // Laimėjo tas, kurio buvo ėjimas
-  console.log(`${turn.toUpperCase()} laimėjo!!!`);
-  if (turn === "x") {
-    scoreX += 1;
-    localStorage.setItem("scoreX", scoreX);
-  } else {
-    scoreO += 1;
-    localStorage.setItem("scoreO", scoreO);
-  }
-  writeScore();
-  started = false;
-}
-
-function writeScore() {
-  document.getElementById("scoreX").textContent = scoreX;
-  document.getElementById("scoreO").textContent = scoreO;
-}
-
-document
-  .getElementById("startWithX")
-  .addEventListener("click", () => onStart("x"));
-document
-  .getElementById("startWithO")
-  .addEventListener("click", () => onStart("o"));
-
-Array.from(boardElement.children).forEach((child, index) => {
-  child.addEventListener("click", () => onCellClick(index));
-});
+const scoreboard = new Scoreboard();
+const messageBoard = new MessageBoard();
+messageBoard.clearMessages();
+messageBoard.addMessage("Žaidimas prasidėjo");
+messageBoard.addMessage("X eilė");
+messageBoard.addMessage("O eilė");
+messageBoard.addMessage("X eilė");
+messageBoard.addMessage("Laimėjo X");
