@@ -1,27 +1,24 @@
-/*
-Prekių katalogas
-Krepšelis
-Bankas
-Norų sąrašas
-Prekė
-*/
+let users;
 
-class Krepselis {
-  constructor() {
-    this.prekes = [];
-  }
+fetch("https://62e7e5c30e5d74566afeac9f.mockapi.io/users")
+  .then(res => {
+    console.log(res);
+    return res.json();
+  })
+  .then(data => {
+    console.log(data);
+    users = data;
+    showUsers();
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
-  pridetiPreke(preke, kiekis = 1) {
-    this.prekes.push({
-      id: preke.id,
-      kiekis
-    });
-  }
-
-  isimtiPreke(preke) {
-    this.prekes.splice(
-      this.prekes.findIndex(krepselioPreke => krepselioPreke.id === preke.id),
-      1
-    );
+function showUsers() {
+  const userContainer = document.getElementById("user-container");
+  for (const user of users) {
+    const userElement = document.createElement("div");
+    userElement.textContent = JSON.stringify(user);
+    userContainer.append(userElement);
   }
 }
