@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Public API results</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form>
+      <label for="title">Pavadinimas:</label>
+      <input id="title" name="title" />
+      <br />
+      <label for="description">Aprašymas:</label>
+      <input id="description" name="description" />
+      <br />
+      <label for="auth">Autentifikavimas:</label>
+      <input id="auth" name="auth" />
+      <br />
+      <label for="https">HTTPS:</label>
+      <select id="https" name="https">
+        <option value="" selected>Nesvarbu</option>
+        <option value="true">Yra</option>
+        <option value="false">Nėra</option>
+      </select>
+      <br />
+      <label for="cors">CORS:</label>
+      <select id="cors" name="cors">
+        <option value="" selected>Nesvarbu</option>
+        <option value="yes">Yra</option>
+        <option value="no">Nėra</option>
+        <option value="unknown">Nežinoma</option>
+      </select>
+      <br />
+      <label for="category">Kategorija:</label>
+      <select id="category" name="category">
+        <option value="" selected>Visos kategorijos</option>
+      </select>
+      <button>Ieškoti</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Pavadinimas</th>
+          <th>Aprašymas</th>
+          <th>Nuoroda</th>
+          <th>Auth</th>
+          <th>HTTPS</th>
+          <th>CORS</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="index.js"></script>
+  </body>
+</html>
