@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch POST</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <form>
+      <label for="name">Prekės pavadinimas:</label>
+      <input id="name" name="name" />
+      <br />
+      <label for="description">Prekės aprašymas:</label>
+      <br />
+      <textarea id="description" name="description"></textarea>
+      <br />
+      <label for="oldPrice">Sena kaina:</label>
+      <input id="oldPrice" name="oldPrice" type="number" min="0" step="0.01" />
+      <br />
+      <label for="newPrice">Nauja kaina:</label>
+      <input id="newPrice" name="newPrice" type="number" min="0" step="0.01" />
+      <br />
+      <label for="discountUntil">Akcija galioja iki:</label>
+      <input id="discountUntil" name="discountUntil" type="date" />
+      <br />
+      <button>Pridėti prekę</button>
+    </form>
+    <div id="notification">Prekė sėkmingai sukurta</div>
+    <script src="index.js"></script>
+  </body>
+</html>
