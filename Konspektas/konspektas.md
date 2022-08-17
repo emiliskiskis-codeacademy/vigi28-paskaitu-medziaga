@@ -326,6 +326,18 @@ MDN: <https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics>
 
 ## HTML formos
 
+žymės:
+
+- `<form>` - Formos pagrindinis elementas
+- `<input>` - įvesties laukas
+- `<label>` - input'o paaiškinimas
+- `<select>`
+- `<option>`
+- `<textarea>`
+- `<fieldset>`
+- `<button>`
+- `<output>`
+
 # CSS
 
 ## Apie CSS
