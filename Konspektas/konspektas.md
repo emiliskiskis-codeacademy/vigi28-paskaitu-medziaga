@@ -326,6 +326,8 @@ MDN: <https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics>
 
 ## HTML formos
 
+kol kas nieko nėra
+
 # CSS
 
 ## Apie CSS
