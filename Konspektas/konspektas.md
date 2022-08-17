@@ -328,9 +328,15 @@ MDN: <https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics>
 
 žymės:
 
-- `<form>`
-- `<input>`
-- `<label>`
+- `<form>` - Formos pagrindinis elementas
+- `<input>` - įvesties laukas
+- `<label>` - input'o paaiškinimas
+- `<select>`
+- `<option>`
+- `<textarea>`
+- `<fieldset>`
+- `<button>`
+- `<output>`
 
 # CSS
 
