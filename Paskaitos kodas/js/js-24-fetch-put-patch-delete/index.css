@@ -1,0 +1,40 @@
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px 10px;
+}
+
+form {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+input,
+select {
+  margin-bottom: 10px;
+}
+
+#notification {
+  box-shadow: black 0 0px 5px -2px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 20px;
+  right: -500px;
+  font-family: Roboto;
+  color: #333;
+  background-color: #fefefe;
+  font-size: 24px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  transition: right 500ms ease-out 0s;
+}
+
+td button:not(:last-child) {
+  margin-right: 10px;
+}
